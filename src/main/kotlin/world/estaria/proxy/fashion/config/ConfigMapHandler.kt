@@ -1,6 +1,5 @@
 package world.estaria.proxy.fashion.config
 
-import io.fabric8.kubernetes.client.KubernetesClient
 import io.fabric8.kubernetes.client.KubernetesClientBuilder
 import world.estaria.kube.configmap.kit.KubeConfigMapKit
 
