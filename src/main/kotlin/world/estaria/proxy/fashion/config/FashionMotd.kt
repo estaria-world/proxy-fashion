@@ -6,6 +6,7 @@ import net.kyori.adventure.text.Component
 import world.avionik.minecraft.common.extension.text
 import world.estaria.proxy.manager.api.ProxyConfig
 import world.estaria.proxy.manager.api.ProxyManagerApi
+import world.estaria.server.manager.api.enums.ServerVariant
 
 /**
  * @author Niklas Nieberler
@@ -17,6 +18,16 @@ class FashionMotd(
     private val header: String,
     private val footer: String
 ) {
+
+    object Default {
+        fun get(type: Type): FashionMotd {
+            return FashionMotd(
+                type,
+                "header",
+                "footer"
+            )
+        }
+    }
 
     enum class Type(
         private val requirementFunction: (ProxyConfig, Int) -> Boolean
