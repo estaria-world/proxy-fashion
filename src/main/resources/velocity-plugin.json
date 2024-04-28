@@ -1,0 +1,15 @@
+{
+  "id": "proxy-fashion",
+  "name": "proxy-fashion",
+  "version": "1.0.1",
+  "authors": [
+    "MrManHD"
+  ],
+  "dependencies": [
+    {
+      "id": "proxy-manager",
+      "optional": true
+    }
+  ],
+  "main": "world.estaria.proxy.fashion.plugin.VelocityPlugin"
+}
