@@ -1,7 +1,6 @@
 package world.estaria.proxy.fashion.config
 
 import com.velocitypowered.api.proxy.InboundConnection
-import com.velocitypowered.api.proxy.Player
 import kotlinx.serialization.Serializable
 import net.kyori.adventure.text.Component
 import world.avionik.minecraft.common.extension.text
