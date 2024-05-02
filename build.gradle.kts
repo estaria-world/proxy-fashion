@@ -41,6 +41,14 @@ repositories {
             password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
         }
     }
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/estaria-world/translation")
+        credentials {
+            username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
+            password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
+        }
+    }
 }
 
 dependencies {
@@ -52,13 +60,22 @@ dependencies {
     compileOnly("world.estaria:kube-configmap-kit:1.0.4")
     compileOnly("world.estaria:proxy-manager-api:1.0.1")
     compileOnly("world.estaria:server-manager-api:1.0.1")
+    compileOnly("world.estaria:translation-api:1.0.5")
+
+    // adventure dependencies
+    val adventureVersion = "4.16.0"
+    compileOnly("net.kyori:adventure-api:$adventureVersion")
+    compileOnly("net.kyori:adventure-text-minimessage:$adventureVersion")
 
     // velocity dependencies
     compileOnly("com.velocitypowered:velocity-api:3.1.1")
     annotationProcessor("com.velocitypowered:velocity-api:3.1.1")
 
     // kubernetes dependencies
-    api("io.fabric8:kubernetes-client:6.12.1")
+    compileOnly("io.fabric8:kubernetes-client:6.12.1")
+
+    // kotlin dependencies
+    compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
 }
 
 tasks.named("shadowJar", ShadowJar::class) {

@@ -9,10 +9,9 @@ import com.velocitypowered.api.proxy.ProxyServer
 import world.estaria.proxy.fashion.config.ConfigMapHandler
 import world.estaria.proxy.fashion.listener.PostLoginListener
 import world.estaria.proxy.fashion.listener.ProxyPingListener
-import world.estaria.proxy.fashion.manager.TablistManager
+import world.estaria.proxy.fashion.tablist.TablistManager
 import world.estaria.proxy.manager.api.ProxyManagerApi
-import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
+import world.estaria.translation.api.TranslationInitializer
 
 /**
  * @author Niklas Nieberler
@@ -24,20 +23,19 @@ class VelocityPlugin @Inject constructor(
 ) {
 
     private val configMapHandler = ConfigMapHandler()
-    private val tablistManager = TablistManager(configMapHandler)
 
     @Subscribe
     fun handleInitialize(event: ProxyInitializeEvent) {
+        val translationManager = TranslationInitializer("tablist", "proxy")
+            .initialize()
+
+        val tablistManager = TablistManager(this.server, translationManager)
+        tablistManager.executeTablistScheduler()
+
         val configHandler = ProxyManagerApi.instance.configHandler
-
-        val scheduler = Executors.newScheduledThreadPool(0)
-        scheduler.scheduleAtFixedRate({
-            this.server.allPlayers.forEach { tablistManager.sendTablist(it) }
-        },1,1, TimeUnit.SECONDS)
-
         val eventManager = this.server.eventManager
         eventManager.register(this, ProxyPingListener(configHandler, this.configMapHandler))
-        eventManager.register(this, PostLoginListener(scheduler, this.tablistManager))
+        eventManager.register(this, PostLoginListener(tablistManager))
     }
 
     @Subscribe
