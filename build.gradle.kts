@@ -59,8 +59,8 @@ dependencies {
     // estaria dependencies
     compileOnly("world.estaria:kube-configmap-kit:1.0.4")
     compileOnly("world.estaria:proxy-manager-api:1.0.1")
-    compileOnly("world.estaria:server-manager-api:1.0.1")
-    compileOnly("world.estaria:translation-api:1.0.5")
+    compileOnly("world.estaria:server-manager-api:1.0.2")
+    compileOnly("world.estaria:translation-api:1.1.0")
 
     // adventure dependencies
     val adventureVersion = "4.16.0"
@@ -68,8 +68,8 @@ dependencies {
     compileOnly("net.kyori:adventure-text-minimessage:$adventureVersion")
 
     // velocity dependencies
-    compileOnly("com.velocitypowered:velocity-api:3.1.1")
-    annotationProcessor("com.velocitypowered:velocity-api:3.1.1")
+    compileOnly("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
+    annotationProcessor("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
 
     // kubernetes dependencies
     compileOnly("io.fabric8:kubernetes-client:6.12.1")

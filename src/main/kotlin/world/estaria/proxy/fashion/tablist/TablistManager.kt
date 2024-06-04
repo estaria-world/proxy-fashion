@@ -3,7 +3,6 @@ package world.estaria.proxy.fashion.tablist
 import com.velocitypowered.api.proxy.Player
 import com.velocitypowered.api.proxy.ProxyServer
 import world.estaria.server.manager.api.ServerManagerApi
-import world.estaria.translation.api.TranslationManager
 import world.estaria.translation.api.extension.getTranslationLocale
 import java.util.*
 import java.util.concurrent.Executors
@@ -14,11 +13,10 @@ import java.util.concurrent.TimeUnit
  */
 
 class TablistManager(
-    private val server: ProxyServer,
-    translationManager: TranslationManager
+    private val server: ProxyServer
 ) {
 
-    private val tablistHelper = TablistHelper(translationManager)
+    private val tablistHelper = TablistHelper()
 
     fun executeTablistScheduler() {
         val scheduler = Executors.newScheduledThreadPool(0)
@@ -35,8 +33,8 @@ class TablistManager(
         val server = ServerManagerApi.instance.serverManager
             .getServerByPlayer(player.uniqueId) ?: return
         player.sendPlayerListHeaderAndFooter(
-            this.tablistHelper.getHeader(server, locale),
-            this.tablistHelper.getFooter(locale)
+            this.tablistHelper.getTablistComponent("header", locale, server),
+            this.tablistHelper.getTablistComponent("footer", locale, server)
         )
     }
 

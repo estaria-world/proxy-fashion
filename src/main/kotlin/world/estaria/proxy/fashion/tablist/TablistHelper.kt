@@ -4,41 +4,30 @@ import net.kyori.adventure.text.Component
 import world.avionik.minecraft.common.extension.text
 import world.estaria.server.manager.api.server.Server
 import world.estaria.translation.api.TranslationManager
+import world.estaria.translation.api.namespace.TranslationService
 import world.estaria.translation.api.placeholder.Placeholder
+import world.estaria.translation.api.registry.GlobalTranslator
 import java.util.*
 
 /**
  * @author Niklas Nieberler
  */
 
-class TablistHelper(
-    private val translationManager: TranslationManager
-) {
+class TablistHelper {
 
-    fun getHeader(server: Server, locale: Locale): Component {
-        return text("                                                                  ")
-            .appendNewline()
-            .append(this.translationManager.translate("header.network.info", locale))
-            .appendNewline()
-            .append(
-                this.translationManager.translate(
-                    "${server.getVariant().name.lowercase()}.header.current.server.info",
-                    locale,
-                    Placeholder.parsed("server", server.getName())
-                )
-            )
-            .appendNewline()
-            .append(text(" "))
-    }
+    private val namespace = TranslationService.fromNamespace("tablist")
 
-    fun getFooter(locale: Locale): Component {
-        return text(" ")
-            .appendNewline()
-            .append(this.translationManager.translate("footer.join.discord", locale))
-            .appendNewline()
-            .append(this.translationManager.translate("footer.discord.url", locale))
-            .appendNewline()
-            .append(text(" "))
+    fun getTablistComponent(key: String, locale: Locale, server: Server): Component {
+        var component = text("                                                                  ")
+
+        this.namespace.getTranslationsFromStartKey(
+            key,
+            locale,
+            Placeholder.parsed("server", server.getGameName() ?: server.getName())
+        ).forEach {
+            component = component.append(it)
+        }
+        return component
     }
 
 }

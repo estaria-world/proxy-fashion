@@ -26,10 +26,10 @@ class VelocityPlugin @Inject constructor(
 
     @Subscribe
     fun handleInitialize(event: ProxyInitializeEvent) {
-        val translationManager = TranslationInitializer("tablist", "proxy")
+        TranslationInitializer("tablist", "proxy")
             .initialize()
 
-        val tablistManager = TablistManager(this.server, translationManager)
+        val tablistManager = TablistManager(this.server)
         tablistManager.executeTablistScheduler()
 
         val configHandler = ProxyManagerApi.instance.configHandler
