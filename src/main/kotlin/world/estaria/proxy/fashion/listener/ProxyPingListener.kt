@@ -19,6 +19,10 @@ class ProxyPingListener(
     fun handleProxyPing(event: ProxyPingEvent) {
         val ping = event.ping
 
+        val hostAddress = event.connection.remoteAddress.address.hostAddress
+        if (hostAddress == "0:0:0:0:0:0:0:1%0")
+            return
+
         val proxyConfig = this.proxyConfigHandler.getConfig()
         val config = this.configMapHandler.getConfig()
 
