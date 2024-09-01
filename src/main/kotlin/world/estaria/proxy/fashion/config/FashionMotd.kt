@@ -6,7 +6,6 @@ import net.kyori.adventure.text.Component
 import world.avionik.minecraft.common.extension.text
 import world.estaria.proxy.manager.api.ProxyConfig
 import world.estaria.proxy.manager.api.ProxyManagerApi
-import world.estaria.server.manager.api.enums.ServerVariant
 
 /**
  * @author Niklas Nieberler
