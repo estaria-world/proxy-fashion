@@ -29,8 +29,8 @@ dependencies {
     // estaria dependencies
     compileOnly("world.estaria:github-file-manager:1.2.0")
     compileOnly("world.estaria:proxy-manager-api:1.0.1")
-    // compileOnly("world.estaria:server-manager-api:1.0.2")
-    // compileOnly("world.estaria:translation-api:1.1.0")
+    compileOnly("world.estaria:server-manager-api:1.0.3")
+    compileOnly("world.estaria:translation-api:1.1.0")
 
     // adventure dependencies
     val adventureVersion = "4.16.0"

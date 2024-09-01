@@ -2,6 +2,9 @@ package world.estaria.proxy.fashion.tablist
 
 import net.kyori.adventure.text.Component
 import world.avionik.minecraft.common.extension.text
+import world.estaria.server.manager.api.server.Server
+import world.estaria.translation.api.namespace.TranslationService
+import world.estaria.translation.api.placeholder.Placeholder
 import java.util.*
 
 /**
@@ -10,8 +13,6 @@ import java.util.*
 
 class TablistHelper {
 
-    /*
-    //TODO: here
     private val namespace = TranslationService.fromNamespace("tablist")
 
     fun getTablistComponent(key: String, locale: Locale, server: Server): Component {
@@ -26,6 +27,5 @@ class TablistHelper {
         }
         return component
     }
-     */
 
 }

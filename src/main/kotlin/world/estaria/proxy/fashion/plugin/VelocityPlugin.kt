@@ -11,6 +11,7 @@ import world.estaria.proxy.fashion.listener.PostLoginListener
 import world.estaria.proxy.fashion.listener.ProxyPingListener
 import world.estaria.proxy.fashion.tablist.TablistManager
 import world.estaria.proxy.manager.api.ProxyManagerApi
+import world.estaria.translation.api.TranslationInitializer
 
 /**
  * @author Niklas Nieberler
@@ -25,8 +26,8 @@ class VelocityPlugin @Inject constructor(
 
     @Subscribe
     fun handleInitialize(event: ProxyInitializeEvent) {
-        //TODO: TranslationInitializer("tablist", "proxy")
-        //TODO:     .initialize()
+        TranslationInitializer("tablist", "proxy")
+            .initialize()
 
         val tablistManager = TablistManager(this.server)
         tablistManager.executeTablistScheduler()
