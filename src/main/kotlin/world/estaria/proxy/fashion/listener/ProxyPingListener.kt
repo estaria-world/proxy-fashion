@@ -2,7 +2,7 @@ package world.estaria.proxy.fashion.listener
 
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.proxy.ProxyPingEvent
-import world.estaria.proxy.fashion.config.ConfigMapHandler
+import world.estaria.proxy.fashion.config.ConfigHandler
 import world.estaria.proxy.fashion.config.FashionMotd
 import world.estaria.proxy.manager.api.ProxyConfigHandler
 
@@ -12,7 +12,7 @@ import world.estaria.proxy.manager.api.ProxyConfigHandler
 
 class ProxyPingListener(
     private val proxyConfigHandler: ProxyConfigHandler,
-    private val configMapHandler: ConfigMapHandler
+    private val configMapHandler: ConfigHandler
 ) {
 
     @Subscribe
