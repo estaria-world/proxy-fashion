@@ -15,12 +15,4 @@ class Config(
         return this.motds.first { it.type == type }
     }
 
-    object Default {
-        fun get(): Config {
-            return Config(
-                FashionMotd.Type.entries.map { FashionMotd.Default.get(it) }
-            )
-        }
-    }
-
 }
