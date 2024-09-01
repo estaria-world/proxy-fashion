@@ -6,12 +6,11 @@ import com.velocitypowered.api.event.proxy.ProxyInitializeEvent
 import com.velocitypowered.api.event.proxy.ProxyReloadEvent
 import com.velocitypowered.api.plugin.Plugin
 import com.velocitypowered.api.proxy.ProxyServer
-import world.estaria.proxy.fashion.config.ConfigMapHandler
+import world.estaria.proxy.fashion.config.ConfigHandler
 import world.estaria.proxy.fashion.listener.PostLoginListener
 import world.estaria.proxy.fashion.listener.ProxyPingListener
 import world.estaria.proxy.fashion.tablist.TablistManager
 import world.estaria.proxy.manager.api.ProxyManagerApi
-import world.estaria.translation.api.TranslationInitializer
 
 /**
  * @author Niklas Nieberler
@@ -22,12 +21,12 @@ class VelocityPlugin @Inject constructor(
     private val server: ProxyServer
 ) {
 
-    private val configMapHandler = ConfigMapHandler()
+    private val configMapHandler = ConfigHandler()
 
     @Subscribe
     fun handleInitialize(event: ProxyInitializeEvent) {
-        TranslationInitializer("tablist", "proxy")
-            .initialize()
+        //TODO: TranslationInitializer("tablist", "proxy")
+        //TODO:     .initialize()
 
         val tablistManager = TablistManager(this.server)
         tablistManager.executeTablistScheduler()
